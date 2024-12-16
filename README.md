@@ -124,7 +124,14 @@ sysmon -c new_cf.xml
             </FileCreateStreamHash>
         </RuleGroup>
 ```
+
 ركز في ال groupRelation , condition, onmatch
+
+ال logs هتلاقيها ف ال event viewer - applications and services logs - microsoft - windows - sysmon
+ولو عايز تمسح الاداة بتكتب 
+```
+sysmon -u force
+```
 ---
 
 **ملاحظة:** تأكد إنك بتحدد ال **events** اللي هتراقبها بناءً على حاجتك. زي ما شوفنا، فيه أمثلة هتفيدك في مراقبة **file** و **process** والأشياء المهمة التانية.
