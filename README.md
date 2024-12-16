@@ -22,7 +22,7 @@
   - **--accepteula** علشان تقبل التراخيص.
 
 وإذا كنت معاك **configuration file** جاهز، ممكن تضيف المسار بتاعه، والملف ده هيكون بصيغة **XML** زي الملف ده:  
-[مثال على Configuration File](https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml)
+[مثال على Configuration File]([https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml](https://raw.githubusercontent.com/sasa00elsaedy/tools_docs/refs/heads/main/custom_config_file_2.xml))
 
 لكن الأحسن إنك تستخدم **configuration file** مخصص ليك، لأن الـ **default** مش هيفيدك قوي.
 
