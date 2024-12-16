@@ -1,0 +1,56 @@
+<Sysmon schemaversion="4.30">
+    <EventFiltering>
+        <RuleGroup name="" groupRelation="or">
+            <NetworkConnect onmatch="include">
+                <Image condition="is">C:\Windows\System32\cmd.exe</Image>
+                <User condition="is">Administrator</User>
+            </NetworkConnect>
+	    <NetworkConnect onmatch="include">
+		<DestinationPort condition="is">4444</DestinationPort>
+	    </NetworkConnect>
+	    <NetworkConnect onmatch="include">
+		<DestinationPort condition="is">8000</DestinationPort>
+	    </NetworkConnect>
+	    <NetworkConnect onmatch="include">
+		<DestinationPort condition="is">22</DestinationPort>
+	    </NetworkConnect>
+        </RuleGroup>
+        
+        
+	<RuleGroup name="NonAdminCmd" groupRelation="or">
+            <ProcessCreate onmatch="include">
+                <Image condition="is">C:\Windows\System32\cmd.exe</Image>
+                <User condition="is not">Administrator</User>
+            </ProcessCreate>
+        </RuleGroup>
+	<RuleGroup name="AdminCmd" groupRelation="or">
+            <ProcessCreate onmatch="include">
+                <Image condition="is">C:\Windows\System32\cmd.exe</Image>
+                <User condition="is">Administrator</User>
+            </ProcessCreate>
+        </RuleGroup>
+
+	<RuleGroup name="notepad_opened" groupRelation="or">
+            <ProcessCreate onmatch="include">
+                <Image condition="is">C:\Windows\System32\notepad.exe</Image>
+            </ProcessCreate>
+        </RuleGroup>
+        
+        <RuleGroup name="Monitor_sasa_FileChanges" groupRelation="or">
+            <FileDelete onmatch="include">
+                <User condition="contains any">NETWORK SERVICE; LOCAL SERVICE</User>
+                <Rule name="Profile Deletion" groupRelation="and">
+                    <TargetFilename condition="contains any">E:\UNINSTALL_TOOLS\sysmon_test</TargetFilename>
+                </Rule>
+            </FileDelete>
+            <FileCreate onmatch="include">
+                <TargetFilename condition="contains any">E:\UNINSTALL_TOOLS\sysmon_test</TargetFilename>
+            </FileCreate>
+            <FileCreateStreamHash onmatch="include">
+                <TargetFilename condition="contains any">E:\UNINSTALL_TOOLS\sysmon_test</TargetFilename>
+            </FileCreateStreamHash>
+        </RuleGroup>
+        
+        
+    </EventFiltering>
+</Sysmon>
